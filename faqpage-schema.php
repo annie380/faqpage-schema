@@ -9,7 +9,17 @@
 
 if (!defined('ABSPATH')) exit;
 
+/**
+ * DISABLED 2026-04-09: The aw-blog-shortcodes plugin (v15+) now outputs
+ * FAQPage JSON-LD inline with the [aw_faq] shortcode. This plugin was
+ * creating duplicate FAQPage schema on every blog post (227 GSC errors).
+ *
+ * If you reactivate this, you will get "Duplicate field FAQPAGE" errors
+ * in Google Search Console.
+ */
 function aw_faqpage_schema_output() {
+    return; // Duplicate of aw-blog-shortcodes FAQ schema output
+    
     if (!is_singular('post')) return;
     
     global $post;
